@@ -1,12 +1,12 @@
-import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
+const plugin = require("tailwindcss/plugin");
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   theme: {
     extend: {
@@ -29,8 +29,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        // Wired up to next/font CSS variables defined in app/layout.tsx.
-        // Fallbacks ensure the page still looks correct without the variables.
+        // Wired up to next/font CSS variables defined in app/layout.js.
         sans: [
           "var(--font-sans)",
           "Inter",
@@ -52,7 +51,7 @@ const config: Config = {
         widest: "0.2em",
       },
       boxShadow: {
-        // Soft radar-green glow used on hover for primary CTAs and buttons.
+        // Soft radar-green glow used on hover for primary CTAs.
         glow: "0 0 24px -4px rgb(0 255 157 / 0.45), inset 0 0 0 1px rgb(0 255 157 / 0.35)",
       },
       animation: {
@@ -73,5 +72,3 @@ const config: Config = {
     }),
   ],
 };
-
-export default config;

@@ -20,12 +20,6 @@ import {
   FileText,
 } from "lucide-react";
 
-export const metadata = {
-  title: "VERTEX C2 — Hardened Command Architecture",
-  description:
-    "Open security research on zero-trust command and control for autonomous systems operating in contested RF environments.",
-};
-
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-black text-zinc-100 antialiased selection:bg-radar/30 selection:text-radar">
@@ -100,7 +94,7 @@ function Nav() {
         </div>
 
         <a
-          href="https://github.com/mrguato/vertex-c2"
+          href="https://github.com/your-handle/vertex-c2"
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 border border-zinc-700 bg-zinc-900/50 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-zinc-300 transition hover:border-radar hover:text-radar hover:shadow-glow"
@@ -115,17 +109,7 @@ function Nav() {
 
 /* ──────────────────── Reusable Section Header ──────────────────── */
 
-function SectionHeader({
-  number,
-  eyebrow,
-  title,
-  subtitle,
-}: {
-  number: string;
-  eyebrow: string;
-  title: string;
-  subtitle?: string;
-}) {
+function SectionHeader({ number, eyebrow, title, subtitle }) {
   return (
     <div className="max-w-3xl">
       <div className="font-mono text-xs uppercase tracking-[0.3em] text-radar">
@@ -216,7 +200,7 @@ function Hero() {
         {/* CTAs */}
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <a
-            href="https://github.com/mrguato/vertex-c2"
+            href="https://github.com/your-handle/vertex-c2"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center gap-2 border border-radar bg-radar/10 px-6 py-3 font-mono text-sm uppercase tracking-wider text-radar transition hover:bg-radar hover:text-black hover:shadow-glow"
@@ -332,7 +316,7 @@ function Problem() {
 
 /* ──────────────────── Architecture ──────────────────── */
 
-const TOKEN_COLORS: Record<string, string> = {
+const TOKEN_COLORS = {
   comment: "text-zinc-500 italic",
   kw: "text-radar",
   str: "text-amber-300/90",
@@ -344,18 +328,20 @@ const TOKEN_COLORS: Record<string, string> = {
   warn: "text-amber-400",
 };
 
-function L({ n, children }: { n: string; children: React.ReactNode }) {
+function L({ n, children }) {
   return (
     <div className="flex">
       <span className="mr-4 inline-block w-6 select-none text-right text-zinc-700">
         {n}
       </span>
-      <span className="flex-1 whitespace-pre-wrap text-zinc-300">{children}</span>
+      <span className="flex-1 whitespace-pre-wrap text-zinc-300">
+        {children}
+      </span>
     </div>
   );
 }
 
-function T({ k, children }: { k: string; children: React.ReactNode }) {
+function T({ k, children }) {
   return <span className={TOKEN_COLORS[k] ?? ""}>{children}</span>;
 }
 
@@ -399,7 +385,9 @@ function TerminalWindow() {
             {"MAVLink v2 → MISSION_ITEM_INT: 37.7749, -122.4194"}
           </L>
           <L n="06">
-            <T k="comment">{"# no auth · no encryption · trivially injectable"}</T>
+            <T k="comment">
+              {"# no auth · no encryption · trivially injectable"}
+            </T>
           </L>
           <L n="07">{" "}</L>
           <L n="08">
@@ -436,19 +424,7 @@ function TerminalWindow() {
 }
 
 /* Visual before/after stack diagram */
-function StackColumn({
-  variant,
-  title,
-  tag,
-  nodes,
-  caveats,
-}: {
-  variant: "vulnerable" | "hardened";
-  title: string;
-  tag: string;
-  nodes: { label: string; sublabel?: string }[];
-  caveats: string[];
-}) {
+function StackColumn({ variant, title, tag, nodes, caveats }) {
   const isHardened = variant === "hardened";
   const tagAccent = isHardened
     ? "border-radar/40 text-radar"
@@ -477,7 +453,9 @@ function StackColumn({
         {nodes.map((node, i) => (
           <div key={i}>
             <div className={`border ${nodeBorder} bg-black/60 px-3 py-2.5`}>
-              <div className="font-mono text-xs text-zinc-100">{node.label}</div>
+              <div className="font-mono text-xs text-zinc-100">
+                {node.label}
+              </div>
               {node.sublabel && (
                 <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
                   {node.sublabel}
@@ -594,10 +572,22 @@ function Architecture() {
             title="VERTEX C2 Hardened Path"
             nodes={[
               { label: "ArduPilot SITL", sublabel: "Simulated airframe" },
-              { label: "WireGuard tunnel", sublabel: "ChaCha20-Poly1305 · psk" },
-              { label: "GCS · Traefik mTLS", sublabel: "Authenticated ingress" },
-              { label: "Cloudflare Tunnel", sublabel: "Zero inbound ports" },
-              { label: "Prometheus + Loki", sublabel: "Telemetry · audit logs" },
+              {
+                label: "WireGuard tunnel",
+                sublabel: "ChaCha20-Poly1305 · psk",
+              },
+              {
+                label: "GCS · Traefik mTLS",
+                sublabel: "Authenticated ingress",
+              },
+              {
+                label: "Cloudflare Tunnel",
+                sublabel: "Zero inbound ports",
+              },
+              {
+                label: "Prometheus + Loki",
+                sublabel: "Telemetry · audit logs",
+              },
             ]}
             caveats={[
               "Encrypted end-to-end",
@@ -701,14 +691,12 @@ function Demo() {
           {/* Video placeholder */}
           <div className="lg:col-span-3">
             <div className="group relative aspect-video overflow-hidden border border-zinc-800 bg-zinc-950">
-              {/* Faux scanline / signal background */}
               <div
                 aria-hidden
                 className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(255,255,255,0.02)_50%)] bg-[length:100%_4px]"
               />
               <CornerTicks />
 
-              {/* Center play affordance */}
               <button
                 type="button"
                 aria-label="Play demo"
@@ -719,7 +707,6 @@ function Demo() {
                 </span>
               </button>
 
-              {/* Top label */}
               <div className="absolute left-4 top-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-radar" />
                 REC · 02:14
@@ -728,7 +715,6 @@ function Demo() {
                 vertex-c2 · attack-demo.mp4
               </div>
 
-              {/* Bottom label */}
               <div className="absolute inset-x-0 bottom-0 border-t border-zinc-800 bg-black/80 px-4 py-3 backdrop-blur">
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300">
                   Wireshark capture · MAVLink intercept → WireGuard hardened
@@ -747,7 +733,7 @@ function Demo() {
                 <div className="flex items-center gap-2">
                   <Github className="h-3.5 w-3.5 text-zinc-400" />
                   <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-300">
-                    mrguato / vertex-c2
+                    your-handle / vertex-c2
                   </span>
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-radar">
@@ -764,7 +750,7 @@ function Demo() {
                 <div className="border border-zinc-800 bg-black p-4 font-mono text-[12px] leading-relaxed">
                   <div>
                     <T k="prompt">{"$ "}</T>git clone
-                    https://github.com/mrguato/vertex-c2
+                    https://github.com/your-handle/vertex-c2
                   </div>
                   <div>
                     <T k="prompt">{"$ "}</T>cd vertex-c2 &amp;&amp; make demo
@@ -776,7 +762,7 @@ function Demo() {
 
                 <div className="flex flex-col gap-2">
                   <a
-                    href="https://github.com/mrguato/vertex-c2"
+                    href="https://github.com/your-handle/vertex-c2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center gap-2 border border-radar bg-radar/10 px-4 py-2.5 font-mono text-xs uppercase tracking-wider text-radar transition hover:bg-radar hover:text-black hover:shadow-glow"
@@ -805,7 +791,7 @@ function Demo() {
 /* ──────────────────── Compliance / CMMC Mapping ──────────────────── */
 
 function Compliance() {
-  const controls: { id: string; req: string; impl: string }[] = [
+  const controls = [
     {
       id: "AC.L1-3.1.1",
       req: "Limit access to authorized users",
@@ -963,7 +949,7 @@ function About() {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="mailto:research@vertexc2.com"
+                href="mailto:research@example.com"
                 className="group inline-flex items-center gap-2 border border-radar bg-radar/10 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-radar transition hover:bg-radar hover:text-black hover:shadow-glow"
               >
                 <Mail className="h-3.5 w-3.5" />
@@ -971,7 +957,7 @@ function About() {
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/jonathan-deleon-cism"
+                href="https://linkedin.com/in/your-handle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 border border-zinc-700 bg-zinc-900/40 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-900"
@@ -1024,8 +1010,8 @@ function Footer() {
       href: "https://github.com/your-handle/vertex-c2",
       label: "GitHub",
     },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/jonathan-deleon-cism", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:research@vertexc2.com", label: "Email" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:research@example.com", label: "Email" },
   ];
 
   return (
