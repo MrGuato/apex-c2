@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "node -e \"const fs=require('fs'); if(fs.existsSync('next.config.ts')) fs.unlinkSync('next.config.ts');\" && npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm install"
 }
