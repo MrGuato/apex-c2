@@ -181,8 +181,3 @@ VERTEX C2: Hardened Command and Control Architecture for Autonomous Systems
 in Contested RF Environments. v0.4.2-alpha, 2026.
 https://github.com/your-handle/vertex-c2
 ```
-
-## Contact
-
-Security disclosure: `security@example.com` (PGP key in `SECURITY.md`).
-General inquiries: `research@example.com`.
