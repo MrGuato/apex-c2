@@ -94,7 +94,7 @@ function Nav() {
         </div>
 
         <a
-          href="https://github.com/your-handle/vertex-c2"
+          href="https://github.com/MrGuato/vertex-c2"
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 border border-zinc-700 bg-zinc-900/50 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-zinc-300 transition hover:border-radar hover:text-radar hover:shadow-glow"
@@ -200,7 +200,7 @@ function Hero() {
         {/* CTAs */}
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <a
-            href="https://github.com/your-handle/vertex-c2"
+            href="https://github.com/MrGuato/vertex-c2"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center gap-2 border border-radar bg-radar/10 px-6 py-3 font-mono text-sm uppercase tracking-wider text-radar transition hover:bg-radar hover:text-black hover:shadow-glow"
@@ -231,6 +231,70 @@ function Hero() {
               </div>
             </div>
           ))}
+        </div>
+        {/* Before / After screenshot evidence */}
+        <div className="mt-16">
+          <div className="mb-6 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500">
+            / Captured Evidence
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="border border-zinc-800 bg-zinc-950/50">
+              <div className="border-b border-zinc-800 bg-zinc-900/60 px-4 py-2.5 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-400">
+                  T-01 · Before
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  Plaintext MAVLink
+                </span>
+              </div>
+              <img
+                src="/screenshots/before-plaintext-mavlink.png"
+                alt="tcpdump showing plaintext MAVLink traffic on UDP 14550"
+                className="w-full"
+              />
+              <div className="px-4 py-3 font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-500">
+                UDP/14550 · commands readable · no auth
+              </div>
+            </div>
+
+            <div className="border border-zinc-800 bg-zinc-950/50">
+              <div className="border-b border-zinc-800 bg-zinc-900/60 px-4 py-2.5 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-radar">
+                  T-01 · After
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  WireGuard Encrypted
+                </span>
+              </div>
+              <img
+                src="/screenshots/after-wireguard-encrypted.png"
+                alt="tcpdump showing encrypted WireGuard traffic on UDP 51820"
+                className="w-full"
+              />
+              <div className="px-4 py-3 font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-500">
+                UDP/51820 · cipher bytes only · ChaCha20-Poly1305
+              </div>
+            </div>
+
+            <div className="border border-zinc-800 bg-zinc-950/50">
+              <div className="border-b border-zinc-800 bg-zinc-900/60 px-4 py-2.5 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-400">
+                  T-02 · PoC
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  Command Injection
+                </span>
+              </div>
+              <img
+                src="/screenshots/t02-unauthenticated-injection.png"
+                alt="inject.py demonstrating unauthenticated MAVLink command injection"
+                className="w-full"
+              />
+              <div className="px-4 py-3 font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-500">
+                No credentials · full command access · T-02 closed by WG auth
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -733,7 +797,7 @@ function Demo() {
                 <div className="flex items-center gap-2">
                   <Github className="h-3.5 w-3.5 text-zinc-400" />
                   <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-300">
-                    your-handle / vertex-c2
+                    MrGuato / vertex-c2
                   </span>
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-radar">
@@ -750,7 +814,7 @@ function Demo() {
                 <div className="border border-zinc-800 bg-black p-4 font-mono text-[12px] leading-relaxed">
                   <div>
                     <T k="prompt">{"$ "}</T>git clone
-                    https://github.com/your-handle/vertex-c2
+                    https://github.com/MrGuato/vertex-c2
                   </div>
                   <div>
                     <T k="prompt">{"$ "}</T>cd vertex-c2 &amp;&amp; make demo
@@ -762,7 +826,7 @@ function Demo() {
 
                 <div className="flex flex-col gap-2">
                   <a
-                    href="https://github.com/your-handle/vertex-c2"
+                    href="https://github.com/MrGuato/vertex-c2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center gap-2 border border-radar bg-radar/10 px-4 py-2.5 font-mono text-xs uppercase tracking-wider text-radar transition hover:bg-radar hover:text-black hover:shadow-glow"
@@ -957,7 +1021,7 @@ function About() {
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="https://linkedin.com/in/your-handle"
+                href="https://www.linkedin.com/in/jonathan-deleon-cism"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 border border-zinc-700 bg-zinc-900/40 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-900"
@@ -1007,10 +1071,10 @@ function Footer() {
   const socials = [
     {
       icon: Github,
-      href: "https://github.com/your-handle/vertex-c2",
+      href: "https://github.com/MrGuato/vertex-c2",
       label: "GitHub",
     },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/jonathan-deleon-cism", label: "LinkedIn" },
     { icon: Mail, href: "mailto:research@example.com", label: "Email" },
   ];
 
